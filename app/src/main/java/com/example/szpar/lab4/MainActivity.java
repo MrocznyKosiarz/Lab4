@@ -1,7 +1,11 @@
 package com.example.szpar.lab4;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -21,8 +25,9 @@ public class MainActivity extends AppCompatActivity {
                 "Koń",
                 "Słoń",
                 "Koza",
-                "Ktrowa",
-                "ITD"
+                "Krowa",
+                "ITD",
+                "ITP"
         };
 
         this.target = new ArrayList<String>();
@@ -34,4 +39,16 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<String> target;
     private ArrayAdapter adapter;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    public void nowyWpis(MenuItem mi) {
+        Intent intencja = new Intent(this, DodajWpis,class);
+        startActivityForResult(intencja, 1);
+    }
 }
