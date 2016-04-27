@@ -20,16 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String[] values = new String[] {
-                "Pies",
-                "Kot",
-                "Koń",
-                "Słoń",
-                "Koza",
-                "Krowa",
-                "ITD",
-                "ITP"
-        };
+        String[] values = new String[] {};
 
         this.target = new ArrayList<String>();
         this.target.addAll(Arrays.asList(values));
