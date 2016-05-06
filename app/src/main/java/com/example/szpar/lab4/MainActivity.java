@@ -28,15 +28,15 @@ public class MainActivity extends AppCompatActivity {
 
         /*
         this.adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, this.target);
+        */
+        MySQLite db = new MySQLite(this);
+        this.adapter = new SimpleCursorAdapter(this, android.R.layout.simple_expandable_list_item_2, db.lista(), new String[] {"_id", "gatunek"}, new int[] {android.R.id.text1, android.R.id.text2}, SimpleCursorAdapter.IGNORE_ITEM_VIEW_TYPE);
         ListView listview = (ListView) findViewById(R.id.listView);
         listview.setAdapter(this.adapter);
-        */
-
-        this.adapter = new SimpleCursorAdapter(this, android.R.layout.simple_expandable_list_item_2, db.lista(), new String[] {"_id", "gatunek"}, new int[] {android.R.id.text1, android.R.id.text2}, SimpleCursorAdapter.IGNORE_ITEM_VIEW_TYPE);
     }
 
     private ArrayList<String> target;
-    private ArrayAdapter adapter;
+    private SimpleCursorAdapter adapter;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

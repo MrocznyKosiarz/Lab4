@@ -1,3 +1,5 @@
+package com.example.szpar.lab4;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -8,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by szpar on 27.04.2016.
  */
 public class MySQLite extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     public MySQLite(Context context) {
         super(context, "animalsDB", null, DATABASE_VERSION);
@@ -17,11 +19,11 @@ public class MySQLite extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase database) {
         String DATABASE_CREATE = "CREATE TABLE animals (" +
-                "id INTEGER PROMARY_KEY AUTOINCREMENT" +
-                "gatunek TEXT NOT NULL" +
-                "kolor TEXT NOT NULL" +
-                "wielkosc REAL NOT NULL" +
-                "opis TEXT NOT NULL);";
+                "_id integer primary key autoincrement," +
+                "gatunek text not null," +
+                "kolor text not null," +
+                "wielkosc real not null," +
+                "opis text not null);";
         database.execSQL(DATABASE_CREATE);
     }
 
@@ -46,7 +48,7 @@ public class MySQLite extends SQLiteOpenHelper {
 
     public void usun(String id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete("animals", " id = ?", new String[]{id});
+        db.delete("animals", "_id = ?", new String[]{id});
         db.close();
     }
 
@@ -58,7 +60,7 @@ public class MySQLite extends SQLiteOpenHelper {
         values.put("kolor", zwierz.getKolor());
         values.put("wielkosc", zwierz.getWielkosc());
         values.put("opis", zwierz.getOpis());
-        int i = db.update("animals", values, " id = ?", new String[]{String.valueOf(zwierz.getId())});
+        int i = db.update("animals", values, "_id = ?", new String[]{String.valueOf(zwierz.getId())});
         db.close();
         return i;
     }

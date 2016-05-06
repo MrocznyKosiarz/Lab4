@@ -1,3 +1,5 @@
+package com.example.szpar.lab4;
+
 import java.io.Serializable;
 
 /**
